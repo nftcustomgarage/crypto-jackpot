@@ -102,16 +102,17 @@ window.onload = function () {
         let winAmount = winCount === 1 ? 1 : winCount === 2 ? 5 : winCount === 3 ? 100 : 0;
 
         if (winAmount > 0) {
-            temporaryBalance += winAmount;
-            houseBalance -= winAmount;
+            playerBalance += winAmount; // Kazanılan coinler oyuncu bakiyesine ekleniyor
+            temporaryBalance += winAmount; // Geçici bakiyeye de ekleniyor
+            houseBalance -= winAmount; // House bakiyesi güncelleniyor
             showMessage(`Congratulations! You won ${winAmount} 2JZ Coin!`);
             spinResults.filter(result => result.icon === winIcon).forEach(result => result.element.classList.add('flash-effect'));
         } else {
-            houseBalance += 0.2;
+            houseBalance += 0.2; // Eğer kazanamazsa house'a küçük bir artış
             showMessage("Spin again!");
         }
 
-        updateBalances();
+        updateBalances(); // Ekrandaki bakiyeleri güncelle
         spinButton.disabled = false;
 
         if (playerBalance <= 0) {
