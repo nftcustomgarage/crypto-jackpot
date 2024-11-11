@@ -169,3 +169,52 @@ window.onload = function () {
 
     spinButton.addEventListener("click", spin);
 };
+function spin() {
+    if (playerBalance <= 0) {
+        resultMessage.textContent = "Insufficient coins! Transfer or buy more coins.";
+        return;
+    }
+
+    spinButton.disabled = true; // Spin butonunu geçici olarak devre dışı bırak
+    resultMessage.textContent = ""; // Mesajı temizle
+    playerBalance--; // Bakiyeden 1 düş
+    spins++; // Spin sayısını artır
+
+    // Liderlik tablosunda spin sayısını güncelle
+    leaderboard[0].spins += 1;
+    updateLeaderboard();
+
+    const slots = document.querySelectorAll('.slot');
+    let spinResults = [];
+    let animationCompleteCount = 0;
+
+    // Slot animasyonları için performans optimizasyonu
+    slots.forEach(slot => slot.classList.remove('flash-effect'));
+    slots.forEach((slot, index) => {
+        let totalSpins = Math.floor(icons.length * 2); // Döngü sayısı optimize edildi
+        let currentSpin = 0;
+
+        function animateSpin() {
+            if (currentSpin < totalSpins) {
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                slot.style.backgroundImage = `url(${randomIcon})`;
+                currentSpin++;
+                requestAnimationFrame(animateSpin); // Daha verimli animasyon
+            } else {
+                const finalIcon = icons[Math.floor(Math.random() * icons.length)];
+                slot.style.backgroundImage = `url(${finalIcon})`;
+                spinResults.push({ icon: finalIcon, element: slot });
+                animationCompleteCount++;
+
+                // Tüm animasyonlar tamamlandığında sonuçları kontrol et
+                if (animationCompleteCount === slots.length) {
+                    checkResults(spinResults);
+                    spinButton.disabled = false; // Spin butonunu tekrar aktif et
+                }
+            }
+        }
+        animateSpin();
+    });
+
+    updateBalances();
+}
