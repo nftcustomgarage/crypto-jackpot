@@ -200,3 +200,62 @@ h2 {
         height: 35px;
     }
 }
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .machine {
+        width: 95%;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .slot {
+        height: 20vh;
+        margin: 0 5px;
+    }
+
+    #player-balance, #spin-counter, #earned-coins {
+        font-size: 1em;
+    }
+
+    #transfer-button, #buy-coin-button, #withdraw-button {
+        width: 120px;
+        font-size: 16px;
+    }
+
+    #spin-button {
+        width: 150px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .slot {
+        height: 15vh;
+    }
+
+    #transfer-button, #buy-coin-button, #withdraw-button {
+        width: 100px;
+        font-size: 14px;
+    }
+
+    #spin-button {
+        width: 120px;
+        height: 100px;
+    }
+}
+
+/* Performans Optimizasyonu için flash animasyonu optimize edildi */
+@keyframes flash {
+    0% { border-color: #00FF00; }
+    100% { border-color: #FFFFFF; }
+}
+
+.flash-effect {
+    animation: flash 0.8s infinite;
+}
