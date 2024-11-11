@@ -13,7 +13,7 @@ window.onload = function () {
     let spins = 0;
     const coinPrice = 0.000005775;
 
-    const icons = [ // Slot makinesi ikonları
+    const icons = [
         'https://i.imgur.com/Xpf9bil.png',
         'https://i.imgur.com/toIiHGF.png',
         'https://i.imgur.com/tuXO9tn.png',
@@ -25,31 +25,24 @@ window.onload = function () {
         'https://i.imgur.com/cAkESML.png'
     ];
 
-    const leaderboard = []; // Liderlik tablosu verisi
+    // Liderlik tablosu için veriler
+    const leaderboard = [
+        { name: "Player1", spins: 0 },
+        { name: "Player2", spins: 0 },
+        { name: "Player3", spins: 0 }
+    ];
 
     // Liderlik tablosunu güncelleyen fonksiyon
-    function updateLeaderboard(playerName = "Guest") {
-        const player = leaderboard.find(p => p.name === playerName);
-
-        if (player) {
-            player.spins += 1; // Oyuncunun spin sayısını artır
-        } else {
-            leaderboard.push({ name: playerName, spins: 1 }); // Yeni oyuncu ekle
-        }
-
+    function updateLeaderboard() {
         leaderboard.sort((a, b) => b.spins - a.spins); // Spin sayılarına göre sıralama
         displayLeaderboard();
     }
 
     // Liderlik tablosunu HTML'de gösteren fonksiyon
     function displayLeaderboard() {
-        const firstSpin = leaderboard[0]?.spins || 0;
-        const secondSpin = leaderboard[1]?.spins || 0;
-        const thirdSpin = leaderboard[2]?.spins || 0;
-
-        document.getElementById("first-spin-count").textContent = firstSpin;
-        document.getElementById("second-spin-count").textContent = secondSpin;
-        document.getElementById("third-spin-count").textContent = thirdSpin;
+        document.getElementById("first-spin-count").textContent = leaderboard[0]?.spins || 0;
+        document.getElementById("second-spin-count").textContent = leaderboard[1]?.spins || 0;
+        document.getElementById("third-spin-count").textContent = leaderboard[2]?.spins || 0;
     }
 
     function updateBalances() {
@@ -68,6 +61,10 @@ window.onload = function () {
         resultMessage.textContent = ""; // Mesajı temizle
         playerBalance--; // Bakiyeden 1 düş
         spins++; // Spin sayısını artır
+
+        // Liderlik tablosunda spin sayısını güncelle
+        leaderboard[0].spins += 1;
+        updateLeaderboard();
 
         const slots = document.querySelectorAll('.slot');
         let spinResults = [];
@@ -94,7 +91,6 @@ window.onload = function () {
                     // Tüm animasyonlar tamamlandığında sonuçları kontrol et
                     if (animationCompleteCount === slots.length) {
                         checkResults(spinResults);
-                        updateLeaderboard("Guest"); // Liderlik tablosunu güncelle
                         spinButton.disabled = false; // Spin butonunu tekrar aktif et
                     }
                 }
@@ -122,6 +118,43 @@ window.onload = function () {
 
         updateBalances();
     }
+
+    // Phantom Wallet bağlantısı kontrolü ve bağlama
+    async function connectPhantomWallet() {
+        if (window.solana && window.solana.isPhantom) {
+            try {
+                const response = await window.solana.connect();
+                const walletAddress = response.publicKey.toString();
+                resultMessage.textContent = `Connected Wallet: ${walletAddress}`;
+                return walletAddress;
+            } catch (error) {
+                alert("Phantom Wallet connection failed. Please try again.");
+            }
+        } else {
+            alert("Phantom Wallet is not detected. Please install Phantom Wallet and try again.");
+        }
+    }
+
+    // Coin satın alma
+    buyCoinButton.addEventListener("click", () => {
+        window.open("https://photon-sol.tinyastro.io/en/lp/H6pB2VhBHxHZ3jpmkBb1WTTpnnktTgjDv2osLJEU1dX9", "_blank");
+    });
+
+    // Coin çekme işlemi
+    async function withdrawCoins() {
+        const walletAddress = await connectPhantomWallet();
+        if (walletAddress && temporaryBalance > 0) {
+            resultMessage.textContent = `💰 ${temporaryBalance} coins successfully withdrawn to your wallet! 💰`;
+            temporaryBalance = 0; // Geçici bakiye sıfırlanır
+            updateBalances();
+        } else if (!walletAddress) {
+            resultMessage.textContent = "Wallet connection required to withdraw coins.";
+        } else {
+            resultMessage.textContent = "No coins available to withdraw.";
+        }
+    }
+
+    withdrawButton.addEventListener("click", withdrawCoins);
 
     transferButton.addEventListener("click", () => {
         if (temporaryBalance > 0) {
