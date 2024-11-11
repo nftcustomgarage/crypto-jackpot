@@ -1,4 +1,3 @@
-/* Genel Ayarlar */
 body {
     display: flex;
     justify-content: center;
@@ -8,10 +7,8 @@ body {
     font-family: 'Press Start 2P', monospace;
     color: #FFFFFF;
     margin: 0;
-    overflow: hidden; /* Kaydırma çubuklarını gizler */
 }
 
-/* Ana Konteyner */
 .machine {
     padding: 20px;
     background: linear-gradient(to right, #191919 0%, #323232 100%);
@@ -22,10 +19,6 @@ body {
     align-items: center;
     width: 90%;
     max-width: 600px;
-    max-height: 100%; /* Yükseklik sınırını ayarla */
-    height: 100%; /* Ekranın tamamını kapla */
-    box-sizing: border-box; /* Padding dahil */
-    overflow: hidden; /* İçerik taşmasını engelle */
 }
 
 /* Başlık */
@@ -39,14 +32,14 @@ h2 {
 /* Balance listesi */
 .balance-list {
     list-style: none;
-    margin-bottom: 10px;
+    margin-bottom: -10px;
     text-align: center;
     font-size: 1em;
     padding-left: 0px;
 }
 
 .balance-list li {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 #weekly-reward, #leaderboard {
@@ -54,12 +47,11 @@ h2 {
     color: #00FF00;
 }
 
-/* Slot Makinesi Tasarımı */
+/* Slot makinesi tasarımı */
 .container {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: 40%; /* Slot makinesi için dinamik yükseklik */
     margin-top: 10px;
     margin-bottom: 0px;
 }
@@ -67,6 +59,7 @@ h2 {
 .slot {
     flex: 1;
     margin: 0 8px;
+    height: 25vh;
     background-color: #d6d6d6;
     background-size: contain;
     background-repeat: no-repeat;
@@ -76,7 +69,7 @@ h2 {
     box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
 }
 
-/* Flash Efekti */
+/* Flash efekti */
 @keyframes flash {
     0% { border-color: #00FF00; }
     50% { border-color: #FFFFFF; }
@@ -88,20 +81,19 @@ h2 {
     border: 8px solid #00FF00;
 }
 
-/* Balance ve Spin Counter Bölümü */
+/* Balance ve Spin Counter bölümü */
 #balance-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -10px;
-    gap: 10px; /* Satır arası boşluk */
+    margin-top: -25px;
 }
 
-#player-balance, #spin-counter, #earned-coins {
-    font-size: 1.2em;
+#player-balance, #earned-coins, #spin-counter {
+    font-size: 1.3em;
     text-align: center;
+    margin-bottom: -2px;
     color: #00FF00;
-    margin: 0;
 }
 
 /* Butonlar */
@@ -113,13 +105,13 @@ h2 {
     margin-top: 20px;
 }
 
-/* Sol Taraftaki Butonları Ortalama */
+/* Sol taraftaki butonları ortalama */
 .left-buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 #transfer-button, #buy-coin-button, #withdraw-button {
@@ -146,7 +138,7 @@ h2 {
     border: none;
 }
 
-/* Sağ Tarafta Spin Butonunu Ortalama */
+/* Sağ tarafta Spin butonunu ortalama */
 .right-button {
     display: flex;
     align-items: center;
@@ -169,93 +161,10 @@ h2 {
     opacity: 0.8;
 }
 
-/* Kazanma/Kaybetme Mesajı */
+/* Kazanma/Kaybetme mesajı */
 #result-message {
     margin-top: 20px;
-    font-size: 1em;
+    font-size: 1.2em;
     color: #FFFF00;
     text-align: center;
-    font-weight: bold;
-}
-
-/* Mobil Uyum */
-@media (max-width: 768px) {
-    .machine {
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-    }
-
-    #player-balance, #spin-counter, #earned-coins {
-        font-size: 1em;
-    }
-
-    #spin-button {
-        width: 120px;
-        height: 100px;
-    }
-
-    #transfer-button, #buy-coin-button, #withdraw-button {
-        font-size: 14px;
-        height: 30px;
-    }
-}
-/* Mobil Uyumluluk */
-@media (max-width: 768px) {
-    .machine {
-        width: 95%;
-    }
-
-    h2 {
-        font-size: 1.5em;
-    }
-
-    .slot {
-        height: 20vh;
-        margin: 0 5px;
-    }
-
-    #player-balance, #spin-counter, #earned-coins {
-        font-size: 1em;
-    }
-
-    #transfer-button, #buy-coin-button, #withdraw-button {
-        width: 120px;
-        font-size: 12px;
-    }
-
-    #spin-button {
-        width: 150px;
-        height: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    h2 {
-        font-size: 1.2em;
-    }
-
-    .slot {
-        height: 15vh;
-    }
-
-    #transfer-button, #buy-coin-button, #withdraw-button {
-        width: 100px;
-        font-size: 12px;
-    }
-
-    #spin-button {
-        width: 120px;
-        height: 100px;
-    }
-}
-
-/* Performans Optimizasyonu için flash animasyonu optimize edildi */
-@keyframes flash {
-    0% { border-color: #00FF00; }
-    100% { border-color: #FFFFFF; }
-}
-
-.flash-effect {
-    animation: flash 0.8s infinite;
 }
