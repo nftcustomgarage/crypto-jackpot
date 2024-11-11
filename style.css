@@ -93,12 +93,12 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: -40px;
     gap: 10px; /* Satır arası boşluk */
 }
 
 #player-balance, #spin-counter, #earned-coins {
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-align: center;
     color: #00FF00;
     margin: 0;
@@ -119,7 +119,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 #transfer-button, #buy-coin-button, #withdraw-button {
