@@ -118,7 +118,7 @@ h2 {
 #transfer-button, #buy-coin-button, #withdraw-button {
     width: 150px;
     height: 30px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -191,7 +191,7 @@ h2 {
 
     #transfer-button, #buy-coin-button, #withdraw-button {
         width: 120px;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     #spin-button {
