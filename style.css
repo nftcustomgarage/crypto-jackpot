@@ -118,13 +118,13 @@ h2 {
 #transfer-button, #buy-coin-button, #withdraw-button {
     width: 150px;
     height: 30px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
 }
 
 .green-button {
     background-color: #32cd32;
-    color: white;
+    color: black;
     border: none;
 }
 
@@ -165,7 +165,7 @@ h2 {
 /* Kazanma/Kaybetme mesajı */
 #result-message {
     margin-top: 20px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #FFFF00;
     text-align: center;
 }
