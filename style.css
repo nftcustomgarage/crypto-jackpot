@@ -1,3 +1,4 @@
+/* Genel Ayarlar */
 body {
     display: flex;
     justify-content: center;
@@ -11,6 +12,7 @@ body {
     overflow-y: auto; /* Dikey kaydırmayı aktif et */
 }
 
+/* Ana Konteyner */
 .machine {
     padding: 20px;
     background: linear-gradient(to right, #191919 0%, #323232 100%);
@@ -21,7 +23,7 @@ body {
     align-items: center;
     width: 90%;
     max-width: 600px;
-    margin: 20px auto; /* Ortalamak için */
+    margin: 20px auto;
 }
 
 /* Başlık */
@@ -87,16 +89,17 @@ h2 {
 /* Balance ve Spin Counter bölümü */
 #balance-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -25px;
+    flex-direction: column; /* Dikey hizalama */
+    align-items: center; /* Ortalamak için */
+    margin-top: 20px; /* Üst boşluk */
+    gap: 10px; /* Her satır arasında boşluk */
 }
 
 #player-balance, #earned-coins, #spin-counter {
-    font-size: 1.3em;
-    text-align: center;
-    margin-bottom: -2px;
-    color: #00FF00;
+    font-size: 1.2em; /* Yazı boyutunu ayarla */
+    text-align: center; /* Ortalamak için */
+    color: #00FF00; /* Yeşil renk */
+    margin: 0; /* Ekstra boşlukları kaldır */
 }
 
 /* Butonlar */
@@ -175,24 +178,25 @@ h2 {
 /* Mobil Uyum için @media Sorguları */
 @media (max-width: 768px) {
     .machine {
-        width: 100%; /* Mobilde daha geniş görünüm */
-        margin: 10px auto;
+        width: 100%;
+        height: 95%; /* Mobilde daha iyi uyum için yükseklik */
+        padding: 15px;
     }
 
     h2 {
-        font-size: 1.5em; /* Başlığı küçült */
+        font-size: 1.5em;
     }
 
     #player-balance, #spin-counter, #earned-coins {
-        font-size: 1em; /* Yazı boyutunu küçült */
+        font-size: 1em;
     }
 
     #spin-button {
-        width: 150px;
-        height: 120px; /* Spin butonunu küçült */
+        width: 120px;
+        height: 100px;
     }
 
     #buy-coin-button, #withdraw-button, #transfer-button {
-        font-size: 14px; /* Buton yazı boyutlarını küçült */
+        font-size: 14px;
     }
 }
