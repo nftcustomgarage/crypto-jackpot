@@ -6,7 +6,7 @@ body {
     background: radial-gradient(circle, #000000, #0a0c0d);
     font-family: 'Press Start 2P', monospace;
     color: #FFFFFF;
-    margin: 0;
+    margin: -10;
 }
 
 .machine {
