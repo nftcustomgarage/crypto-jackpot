@@ -7,6 +7,7 @@
     <title>Crypto Jackpot</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/@solana/web3.js/1.31.0/solanaWeb3.min.js"></script>
+    <script src="game.js" defer></script>
 </head>
 <body>
 
@@ -15,9 +16,9 @@
             <li id="weekly-reward">Weekly Reward Pool: 13,200,000 Coins ($74.99)</li>
             <li id="leaderboard">Top Player Prizes:
                 <ul>
-                    <li>1st: 6,600,000 Coins ($37.50)</li>
-                    <li>2nd: 3,960,000 Coins ($22.50)</li>
-                    <li>3rd: 2,640,000 Coins ($15.00)</li>
+                    <li>1st: 6,600,000 Coins ($37.50) - Spins: <span id="first-spin-count">0</span></li>
+                    <li>2nd: 3,960,000 Coins ($22.50) - Spins: <span id="second-spin-count">0</span></li>
+                    <li>3rd: 2,640,000 Coins ($15.00) - Spins: <span id="third-spin-count">0</span></li>
                 </ul>
             </li>
         </ul>
@@ -35,10 +36,12 @@
         <div id="balance-section">
             <p id="player-balance">Your Balance: 20 Coins ($0.0001)</p>
             <p id="spin-counter">Spins: 0</p>
+            <p id="earned-coins">Earned Coins: 0 Coins ($0.0000)</p>
         </div>
 
         <div class="button-container">
             <div class="left-buttons">
+                <button id="transfer-button" class="green-button">Transfer Coins</button>
                 <button id="buy-coin-button">BUY Coin</button>
                 <button id="withdraw-button">Withdraw Coins</button>
             </div>
@@ -50,6 +53,5 @@
         <p id="wallet-address"></p>
     </div>
 
-    <script src="game.js"></script>
 </body>
 </html>
