@@ -172,7 +172,7 @@ h2 {
 /* Kazanma/Kaybetme Mesajı */
 #result-message {
     margin-top: 20px;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #FFFF00;
     text-align: center;
     font-weight: bold;
@@ -197,7 +197,7 @@ h2 {
 
     #transfer-button, #buy-coin-button, #withdraw-button {
         font-size: 14px;
-        height: 35px;
+        height: 30px;
     }
 }
 /* Mobil Uyumluluk */
@@ -221,7 +221,7 @@ h2 {
 
     #transfer-button, #buy-coin-button, #withdraw-button {
         width: 120px;
-        font-size: 16px;
+        font-size: 12px;
     }
 
     #spin-button {
@@ -241,7 +241,7 @@ h2 {
 
     #transfer-button, #buy-coin-button, #withdraw-button {
         width: 100px;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     #spin-button {
