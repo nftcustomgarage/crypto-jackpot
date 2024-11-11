@@ -78,6 +78,7 @@ h2 {
 
 .flash-effect {
     animation: flash 0.5s infinite;
+    border: 8px solid #00FF00;
 }
 
 /* Balance ve Spin Counter bölümü */
@@ -88,15 +89,10 @@ h2 {
     margin-top: -25px;
 }
 
-#player-balance {
+#player-balance, #earned-coins, #spin-counter {
     font-size: 1.3em;
     text-align: center;
     margin-bottom: -2px;
-    color: #00FF00;
-}
-
-#spin-counter {
-    font-size: 1.2em;
     color: #00FF00;
 }
 
@@ -118,11 +114,17 @@ h2 {
     gap: 10px;
 }
 
-#buy-coin-button, #withdraw-button {
+#transfer-button, #buy-coin-button, #withdraw-button {
     width: 150px;
     height: 30px;
     font-size: 18px;
     cursor: pointer;
+}
+
+.green-button {
+    background-color: #32cd32;
+    color: white;
+    border: none;
 }
 
 #buy-coin-button {
@@ -155,7 +157,7 @@ h2 {
     border: none;
 }
 
-#buy-coin-button:hover, #withdraw-button:hover, #spin-button:hover {
+#transfer-button:hover, #buy-coin-button:hover, #withdraw-button:hover, #spin-button:hover {
     opacity: 0.8;
 }
 
