@@ -7,6 +7,8 @@ body {
     font-family: 'Press Start 2P', monospace;
     color: #FFFFFF;
     margin: 0;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
+    overflow-y: auto; /* Dikey kaydırmayı aktif et */
 }
 
 .machine {
@@ -19,6 +21,7 @@ body {
     align-items: center;
     width: 90%;
     max-width: 600px;
+    margin: 20px auto; /* Ortalamak için */
 }
 
 /* Başlık */
@@ -167,4 +170,29 @@ h2 {
     font-size: 1.2em;
     color: #FFFF00;
     text-align: center;
+}
+
+/* Mobil Uyum için @media Sorguları */
+@media (max-width: 768px) {
+    .machine {
+        width: 100%; /* Mobilde daha geniş görünüm */
+        margin: 10px auto;
+    }
+
+    h2 {
+        font-size: 1.5em; /* Başlığı küçült */
+    }
+
+    #player-balance, #spin-counter, #earned-coins {
+        font-size: 1em; /* Yazı boyutunu küçült */
+    }
+
+    #spin-button {
+        width: 150px;
+        height: 120px; /* Spin butonunu küçült */
+    }
+
+    #buy-coin-button, #withdraw-button, #transfer-button {
+        font-size: 14px; /* Buton yazı boyutlarını küçült */
+    }
 }
